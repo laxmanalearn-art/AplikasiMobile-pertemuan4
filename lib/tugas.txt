@@ -1,0 +1,11 @@
+Latihan praktikum mahasiswa 
+Latihan 1 — Identitas aplikasi
+Ubah title menjadi 'Aplikasi Mahasiswa' dan teks di tengah menjadi nama masing-masing.
+Latihan 2 — Tema warna
+Ganti seedColor dari Colors.indigo menjadi Colors.green, Colors.orange, atau warna lain.
+Latihan 3 — AppBar
+Ubah judul AppBar menjadi 'Dashboard Mahasiswa'.
+Latihan 4 — Tema gelap
+Tambahkan darkTheme dan ubah themeMode menjadi ThemeMode.dark.
+Latihan 5 — Halaman profil
+Buat class ProfilePage dan gunakan sebagai halaman yang dibuka melalui home.

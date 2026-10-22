@@ -20,9 +20,9 @@ class MyApp extends StatelessWidget {
       ),
 
       home: Scaffold(
-        appBar: AppBar(title: const Text('Belajar Flutter')),
+        appBar: AppBar(title: const Text('Aplikasi Mahasiswa')),
         body: const Center(
-          child: Text('Belajar Flutter!', style: TextStyle(fontSize: 20)),
+          child: Text('Nama : Bayu Laksmana!', style: TextStyle(fontSize: 24)),
         ),
       ),
     );
