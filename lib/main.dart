@@ -10,19 +10,19 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Aplikasi Kampus',
-
+      title: 'Aplikasi Mahasiswa',
       debugShowCheckedModeBanner: false,
-
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
-        useMaterial3: true,
-      ),
-
       home: Scaffold(
-        appBar: AppBar(title: const Text('Aplikasi Mahasiswa')),
+        appBar: AppBar(title: const Text('Dashboard Mahasiswa')),
         body: const Center(
-          child: Text('Nama : Bayu Laksmana!', style: TextStyle(fontSize: 24)),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text('Nama : Bayu Laksmana', style: TextStyle(fontSize: 24)),
+              Text('NIM : 1124160070', style: TextStyle(fontSize: 16)),
+              Text('Kelas : TI SE SH 24', style: TextStyle(fontSize: 16)),
+            ],
+          ),
         ),
       ),
     );
