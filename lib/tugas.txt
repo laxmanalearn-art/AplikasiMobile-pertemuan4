@@ -1,11 +1,72 @@
-Latihan praktikum mahasiswa 
-Latihan 1 — Identitas aplikasi
-Ubah title menjadi 'Aplikasi Mahasiswa' dan teks di tengah menjadi nama masing-masing.
-Latihan 2 — Tema warna
-Ganti seedColor dari Colors.indigo menjadi Colors.green, Colors.orange, atau warna lain.
-Latihan 3 — AppBar
-Ubah judul AppBar menjadi 'Dashboard Mahasiswa'.
-Latihan 4 — Tema gelap
-Tambahkan darkTheme dan ubah themeMode menjadi ThemeMode.dark.
-Latihan 5 — Halaman profil
-Buat class ProfilePage dan gunakan sebagai halaman yang dibuka melalui home.
+
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Aplikasi Mahasiswa',
+      debugShowCheckedModeBanner: false,
+
+      // Tema terang
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.orange,
+        ),
+        useMaterial3: true,
+      ),
+
+      // Tema gelap
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.blue,
+          brightness: Brightness.dark,
+        ),
+        useMaterial3: true,
+      ),
+
+      // Untuk sementara, gunakan tema terang
+      themeMode: ThemeMode.light,
+
+      // Halaman utama
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Dashboard Mahasiswa'),
+        ),
+        body: const Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                'Nama : Bayu Laksmana',
+                style: TextStyle(fontSize: 24),
+              ),
+              SizedBox(height: 12),
+              Text(
+                'NIM : 1124160070',
+                style: TextStyle(fontSize: 16),
+              ),
+              SizedBox(height: 8),
+              Text(
+                'Kelas : TI SE SH 24',
+                style: TextStyle(fontSize: 16),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
