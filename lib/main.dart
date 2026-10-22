@@ -12,8 +12,10 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  // Menyimpan status tema aplikasi
   bool _isDarkMode = false;
 
+  // Mengubah tema terang menjadi gelap, atau sebaliknya
   void _toggleTheme() {
     setState(() {
       _isDarkMode = !_isDarkMode;
@@ -24,12 +26,11 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Aplikasi Mahasiswa',
-
       debugShowCheckedModeBanner: false,
 
       // Tema terang
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.orange),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.purple),
         useMaterial3: true,
       ),
 
@@ -37,7 +38,7 @@ class _MyAppState extends State<MyApp> {
       darkTheme: ThemeData(
         brightness: Brightness.dark,
         colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.blue,
+          seedColor: Colors.green,
           brightness: Brightness.dark,
         ),
         useMaterial3: true,
@@ -45,29 +46,54 @@ class _MyAppState extends State<MyApp> {
 
       themeMode: _isDarkMode ? ThemeMode.dark : ThemeMode.light,
 
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Dashboard Mahasiswa'),
-          actions: [
-            IconButton(
-              onPressed: _toggleTheme,
-              icon: Icon(_isDarkMode ? Icons.light_mode : Icons.dark_mode),
-              tooltip: _isDarkMode
-                  ? 'Aktifkan mode terang'
-                  : 'Aktifkan mode gelap',
-            ),
-          ],
-        ),
+      // Halaman utama aplikasi
+      home: ProfilePage(isDarkMode: _isDarkMode, onToggleTheme: _toggleTheme),
+    );
+  }
+}
 
-        body: const Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text('Nama : Bayu Laksmana', style: TextStyle(fontSize: 24)),
-              Text('NIM : 1124160070', style: TextStyle(fontSize: 16)),
-              Text('Kelas : TI SE SH 24', style: TextStyle(fontSize: 16)),
-            ],
+class ProfilePage extends StatelessWidget {
+  final bool isDarkMode;
+
+  final VoidCallback onToggleTheme;
+
+  const ProfilePage({
+    super.key,
+    required this.isDarkMode,
+    required this.onToggleTheme,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Dashboard Mahasiswa'),
+        backgroundColor: const Color.fromARGB(255, 7, 85, 149),
+        actions: [
+          TextButton.icon(
+            onPressed: onToggleTheme,
+            icon: Icon(isDarkMode ? Icons.light_mode : Icons.dark_mode),
+            label: const Text('Ganti Mode'),
           ),
+          const SizedBox(width: 8),
+        ],
+      ),
+
+      body: const Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            CircleAvatar(radius: 48, child: Icon(Icons.person, size: 48)),
+            SizedBox(height: 16),
+            Text(
+              'Bayu Laksmana',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 8),
+            Text('NIM: 1124160070'),
+            SizedBox(height: 4),
+            Text('Kelas: TI SE SH 24'),
+          ],
         ),
       ),
     );
